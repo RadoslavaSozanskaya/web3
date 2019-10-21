@@ -31,9 +31,9 @@
         function dtime(d, type) {
             var dayNames;
             if(type==1)
-                dayNames=new Array('Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag');
+                dayNames=new Array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
             else
-                dayNames=new Array('Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag');
+                dayNames=new Array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
             var now = new Date();
             var month = now.getMonth() + 1;
             if ((now.getDate() + d + 1) < 1) {
@@ -853,12 +853,13 @@ Panaskan tortilla dalam wajan kering selama 30 detik, lalu tetap hangat dengan h
     function scrollTo(hash) {
         location.hash = "#" + hash;
     }
-    var c = $('#disable_bl').offset().top;
-    
-    scrollTo('disable_bl')
-    $(window).scroll(function(){
-        if($(window).scrollTop() <= c){
-            $('html,body').animate({scrollTop: $('#disable_bl').offset().top  }, 0);
+    var w = $(window);
+    var scrollEl = $('#disable_bl');
+    var topEdge = scrollEl.offset().top;
+    scrollTo('disable_bl');
+    w.scroll(function(){
+        if(w.scrollTop() <= topEdge){
+            scrollEl.get(0).scrollIntoView();
         }
     })
 })</script>
